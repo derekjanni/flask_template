@@ -1,3 +1,4 @@
+import time
 import flask_template.api.services.external_api as external_api
 from flask.ext.restful import reqparse, Resource
 
