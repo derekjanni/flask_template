@@ -1,3 +1,7 @@
+import flask_template.api.utils as utils
+import flask_template.api.services.user as user_service
+from flask.ext.restful import reqparse, Resource, abort
+
 # Custom parsing
 parser = reqparse.RequestParser()
 parser.add_argument('first_name', type=unicode, help="User's first name")
@@ -37,11 +41,6 @@ class UserResource(Resource):
 	   'last_name': last_name,
 	   'city': city
 	}
-
-        try:
-            return user_service.get_user(id, **additional_info)
-
-	except AttributeError as e:
-	    abort(404, message='Bad data input: {0}'.format(str(e)))
+        return user_service.get_user(user_id, **additional_info)
 
 

@@ -1,13 +1,14 @@
+
 class User(object):
     def __init__(
         self,
-        id,
+        user_id,
 	**kwargs
     ):
-        self.id = user_id
-        self._fist_name = kwargs.get('first_name')
-	self._last_name = kwargs.get('last_name')
-	self._city = kwargs.get('city')
+        self.user_id = user_id
+        self._first_name = kwargs.get('first_name')
+	self._last_name = kwargs.get('last_name', None)
+	self._city = kwargs.get('city', None)
 
     @property
     def first_name(self):
@@ -23,7 +24,7 @@ class User(object):
 
     def to_dict(self):
 	return {
-	   'id': self.id,
+	   'id': self.user_id,
            'first_name': self.first_name,
 	   'last_name': self.last_name,
 	   'city': self.city
