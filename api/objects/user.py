@@ -7,8 +7,8 @@ class User(object):
     ):
         self.user_id = user_id
         self._first_name = kwargs.get('first_name')
-	self._last_name = kwargs.get('last_name', None)
-	self._city = kwargs.get('city', None)
+	self._last_name = kwargs.get('last_name')
+	self._city = kwargs.get('city')
 
     @property
     def first_name(self):
