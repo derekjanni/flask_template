@@ -24,7 +24,7 @@ class User(object):
 
     def to_dict(self):
 	return {
-	   'id': self.user_id,
+	   'user_id': self.user_id,
            'first_name': self.first_name,
 	   'last_name': self.last_name,
 	   'city': self.city
