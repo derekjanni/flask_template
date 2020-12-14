@@ -1,7 +1,7 @@
 
 import flask.ext.restful as flask_restful
-import flask_template.api.resources.user as user_resource
-import flask_template.api.resources.ping as ping_resource
+import resources.user as user_resource
+import resources.ping as ping_resource
 from flask import Flask
 
 # Create app.
@@ -19,4 +19,3 @@ api.add_resource(user_resource.UserResource, '/user/<user_id>')
 
 if __name__ == "__main__":
     app.run(debug=True)
-

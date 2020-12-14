@@ -1,12 +1,12 @@
-import flask_template.api.utils as utils
-import flask_template.api.services.user as user_service
+import utils
+import services.user as user_service
 from flask.ext.restful import reqparse, Resource, abort
 
 # Custom parsing
 parser = reqparse.RequestParser()
-parser.add_argument('first_name', type=unicode, help="User's first name")
-parser.add_argument('last_name', type=unicode, help="User's last name")
-parser.add_argument('city', type=unicode, help="User's home city")
+parser.add_argument('first_name', type=str, help="User's first name")
+parser.add_argument('last_name', type=str, help="User's last name")
+parser.add_argument('city', type=str, help="User's home city")
 
 class UserResource(Resource):
 
@@ -33,14 +33,12 @@ class UserResource(Resource):
         """
         args = utils.parse_args(parser)
         first_name = args.get('first_name')
-	last_name = args.get('last_name')
-	city = args.get('city')
-	
-	additional_info = {
-	   'first_name': first_name,
-	   'last_name': last_name,
-	   'city': city
-	}
+        last_name = args.get('last_name')
+        city = args.get('city')
+
+        additional_info = {
+            'first_name': first_name,
+            'last_name': last_name,
+            'city': city
+        }
         return user_service.get_user(user_id, **additional_info)
-
-

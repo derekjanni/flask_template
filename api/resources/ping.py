@@ -1,5 +1,5 @@
 import time
-import flask_template.api.services.external_api as external_api
+import services.external_api as external_api
 from flask.ext.restful import reqparse, Resource
 
 
@@ -90,4 +90,3 @@ class PongResource(Resource):
             resp['message'] = "FAIL"
 
         return resp
-
