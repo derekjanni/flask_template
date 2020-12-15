@@ -1,14 +1,12 @@
 #!/bin/sh
 
 echo "Starting API"
-while ! nc -z $DB_HOST 5432; do
+while ! nc -z $REDIS_HOST 5432; do
   sleep 0.1
 done
 
 echo "Connected to Postgres"
 export FLASK_APP=src/api.py
-python src/utils.py --check-db # will do nothing if db already exists
-flask db upgrade
 
 exec gunicorn --bind 0.0.0.0:5005 wsgi:app \
   --access-logfile=- \

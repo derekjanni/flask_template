@@ -8,4 +8,3 @@ def parse_args(parser, record_params=False):
         logging_services.record_custom_parameters(**args)
 
     return args
-

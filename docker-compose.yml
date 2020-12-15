@@ -11,10 +11,11 @@ services:
     ports:
       - "5005:5005"
     depends_on:
-      - postgres
-  postgres:
-    image: "postgres:9.6.1"
+      - redis
+  redis:
+    image: "redis:alpine"
+    command: redis-server
     ports:
-       - 5432:5432
+       - 6379:6379
     env_file:
       - .env
