@@ -1,11 +1,11 @@
 #!/bin/sh
 
-echo "Starting API"
-while ! nc -z $REDIS_HOST 5432; do
+while ! nc -z $REDIS_HOST 6379; do
+  echo "Connecting to Redis"
   sleep 0.1
 done
 
-echo "Connected to Postgres"
+echo "Starting API"
 export FLASK_APP=src/api.py
 
 exec gunicorn --bind 0.0.0.0:5005 wsgi:app \
